@@ -75,6 +75,11 @@ public class Constants
     public static final String TOKEN = "token";
 
     /**
+     * 登录用户编号 redis key
+     */
+    public static final String LOGIN_USERID_KEY = "login_userid";
+
+    /**
      * 令牌前缀
      */
     public static final String TOKEN_PREFIX = "Bearer ";
