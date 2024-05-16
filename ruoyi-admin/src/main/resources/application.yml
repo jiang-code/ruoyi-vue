@@ -3,11 +3,9 @@ ruoyi:
   # 名称
   name: RuoYi
   # 版本
-  version: 3.8.6
+  version: 3.8.7
   # 版权年份
-  copyrightYear: 2023
-  # 实例演示开关
-  demoEnabled: true
+  copyrightYear: 2024
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
   profile: D:/ruoyi/uploadPath
   # 获取ip地址开关
@@ -33,14 +31,19 @@ server:
       # Tomcat启动初始化的线程数，默认值10
       min-spare: 100
 
+# 日志配置
+logging:
+  level:
+    com.ruoyi: debug
+    org.springframework: warn
 
 # 用户配置
 user:
   password:
     # 密码最大错误次数
-    maxRetryCount: 2
+    maxRetryCount: 5
     # 密码锁定时间（默认10分钟）
-    lockTime: 2
+    lockTime: 10
 
 # Spring配置
 spring:
@@ -93,8 +96,6 @@ token:
   secret: abcdefghijklmnopqrstuvwxyz
   # 令牌有效期（默认30分钟）
   expireTime: 30
-  # 是否允许账户多终端同时登录（true允许 false不允许）
-  soloLogin: false
 
 # MyBatis配置
 mybatis:

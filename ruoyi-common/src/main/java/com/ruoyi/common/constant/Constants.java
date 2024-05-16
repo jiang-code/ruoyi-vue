@@ -1,5 +1,6 @@
 package com.ruoyi.common.constant;
 
+import java.util.Locale;
 import io.jsonwebtoken.Claims;
 
 /**
@@ -18,6 +19,11 @@ public class Constants
      * GBK 字符集
      */
     public static final String GBK = "GBK";
+
+    /**
+     * 系统语言
+     */
+    public static final Locale DEFAULT_LOCALE = Locale.SIMPLIFIED_CHINESE;
 
     /**
      * www主域
@@ -63,7 +69,27 @@ public class Constants
      * 登录失败
      */
     public static final String LOGIN_FAIL = "Error";
- 
+
+    /**
+     * 所有权限标识
+     */
+    public static final String ALL_PERMISSION = "*:*:*";
+
+    /**
+     * 管理员角色权限标识
+     */
+    public static final String SUPER_ADMIN = "admin";
+
+    /**
+     * 角色权限分隔符
+     */
+    public static final String ROLE_DELIMETER = ",";
+
+    /**
+     * 权限标识分隔符
+     */
+    public static final String PERMISSION_DELIMETER = ",";
+
     /**
      * 验证码有效期（分钟）
      */
@@ -73,11 +99,6 @@ public class Constants
      * 令牌
      */
     public static final String TOKEN = "token";
-
-    /**
-     * 登录用户编号 redis key
-     */
-    public static final String LOGIN_USERID_KEY = "login_userid";
 
     /**
      * 令牌前缀
@@ -142,11 +163,11 @@ public class Constants
     /**
      * 定时任务白名单配置（仅允许访问的包名，如其他需要可以自行添加）
      */
-    public static final String[] JOB_WHITELIST_STR = { "com.ruoyi" };
+    public static final String[] JOB_WHITELIST_STR = { "com.ruoyi.quartz.task" };
 
     /**
      * 定时任务违规的字符
      */
     public static final String[] JOB_ERROR_STR = { "java.net.URL", "javax.naming.InitialContext", "org.yaml.snakeyaml",
-            "org.springframework", "org.apache", "com.ruoyi.common.utils.file", "com.ruoyi.common.config" };
+            "org.springframework", "org.apache", "com.ruoyi.common.utils.file", "com.ruoyi.common.config", "com.ruoyi.generator" };
 }
