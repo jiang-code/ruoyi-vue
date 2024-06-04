@@ -16,7 +16,9 @@
         业务模块
     </description>
     <modules>
-        <module>shop-admin-api</module>
+<!--        <module>shop-admin-api</module>-->
+        <module>dts-admin-api</module>
+<!--        <module>dts-wx-api</module>-->
     </modules>
 
     <dependencies>

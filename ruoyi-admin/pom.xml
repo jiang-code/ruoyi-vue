@@ -63,8 +63,8 @@
 
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>shop-api</artifactId>
-            <version>3.8.6</version>
+            <artifactId>dts-admin-api</artifactId>
+            <version>3.8.7</version>
         </dependency>
     </dependencies>
 

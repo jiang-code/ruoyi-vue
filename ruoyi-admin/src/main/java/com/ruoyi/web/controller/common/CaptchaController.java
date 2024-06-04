@@ -1,11 +1,14 @@
 package com.ruoyi.web.controller.common;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.common.utils.VerifyCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +79,10 @@ public class CaptchaController
         }
 
         redisCache.setCacheObject(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
+        // 生成图片
+        int w = 111, h = 36;
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        VerifyCodeUtils.outputImage(w, h, stream, capStr);
         // 转换流信息写出
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
         try
@@ -88,7 +95,7 @@ public class CaptchaController
         }
 
         ajax.put("uuid", uuid);
-        ajax.put("img", Base64.encode(os.toByteArray()));
+        ajax.put("img", Base64.encode(stream.toByteArray()));
         return ajax;
     }
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.dts.mapper.ex.StatMapper">
+   
+    <resultMap id="DayStatis" type="com.ruoyi.dts.bean.DayStatis">
+	    <result column="statis_day" jdbcType="VARCHAR" property="dayStr" />
+	    <result column="statis_cnts" jdbcType="INTEGER" property="cnts" />
+	    <result column="statis_amts" jdbcType="INTEGER" property="amts" />
+    </resultMap>
+    
+    <resultMap id="CategorySellAmts" type="com.ruoyi.dts.bean.CategorySellAmts">
+	    <result column="category_name" jdbcType="VARCHAR" property="name" />
+	    <result column="statis_amts" jdbcType="INTEGER" property="value" />
+    </resultMap>
+
+    <select id="statisIncreaseUserCnt" resultMap="DayStatis" parameterType="map">
+	    select date_format(t.add_time,"%Y-%m-%d") as statis_day,count(1) as statis_cnts  
+		from dts_user t where t.add_time &gt; date_add(now(),interval -#{daysAgo} day)
+		and t.deleted=0 
+		group by date_format(t.add_time,"%Y-%m-%d")
+    </select>
+    
+    <select id="statisIncreaseOrderCnt" resultMap="DayStatis" parameterType="map">
+	    select date_format(t.add_time,"%Y-%m-%d") as statis_day,count(1) as statis_cnts,sum(actual_price) as statis_amts    
+		from dts_order t where t.add_time &gt; date_add(now(),interval -#{daysAgo} day)
+		and t.deleted=0 and t.order_status not in(101,102,103) 
+		group by date_format(t.add_time,"%Y-%m-%d")
+    </select>
+    
+    <select id="categorySellStatis" resultMap="CategorySellAmts">
+	    select pc.name as category_name,sum(og.price) as statis_amts from dts_order_goods og
+		join dts_order o on o.id = og.order_id
+		join dts_goods g on g.id = og.goods_id
+		join dts_category c on g.category_id = c.id
+		join dts_category pc on pc.id = c.pid
+		where og.deleted=0 and o.order_status not in(101,102,103) 
+		group by pc.name 
+    </select>
+    
+    <select id="statUser" resultType="map">
+        select
+        substr(add_time,1,10) as day,
+        count(distinct id) as users
+        from dts_user
+        group by substr(add_time,1,10)
+    </select>
+    
+    <select id="statOrder" resultType="map">
+        select
+        substr(add_time,1,10) as day,
+        count(id) as orders,
+        count(distinct user_id) as customers,
+        sum(actual_price) as amount,
+        round(sum(actual_price)/count(distinct user_id),2) as pcr
+        from dts_order
+        where order_status in(103)
+        group by substr(add_time,1,10)
+    </select>
+    
+    <select id="statGoods" resultType="map">
+        select
+        substr(add_time,1, 10) as day,
+        count(distinct order_id) as orders,
+        sum(number) as products,
+        sum(number*price) as amount
+        from dts_order_goods
+        group by substr(add_time,1, 10)
+    </select>
+</mapper>
