@@ -8,7 +8,11 @@ import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsCollect;
+import com.ruoyi.dts.db.domain.DtsGoods;
+import com.ruoyi.dts.db.service.DtsCollectService;
+import com.ruoyi.dts.db.service.DtsGoodsService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsCollect;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.service.DtsCollectService;
-import com.ruoyi.dts.service.DtsGoodsService;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 
 /**

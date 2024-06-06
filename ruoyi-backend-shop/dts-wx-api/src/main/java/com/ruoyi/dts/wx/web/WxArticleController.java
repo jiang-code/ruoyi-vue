@@ -2,7 +2,9 @@ package com.ruoyi.dts.wx.web;
 
 import javax.validation.constraints.NotNull;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsArticle;
+import com.ruoyi.dts.db.service.DtsArticleService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ruoyi.dts.domain.DtsArticle;
-import com.ruoyi.dts.service.DtsArticleService;
 
 /**
  * 用户收货地址服务

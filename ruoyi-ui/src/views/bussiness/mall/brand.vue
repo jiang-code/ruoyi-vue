@@ -36,7 +36,8 @@
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageNum" :limit.sync="listQuery.pageSize" @pagination="getList" />
+
 
     <!-- 店铺二维展示框 -->
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="shareUrlDialogVisible" width="700">
@@ -182,8 +183,8 @@ export default {
   methods: {
     init: function() {
       listCatAndAdmin().then(response => {
-        this.categoryList = response.data.data.categoryList
-        this.adminList = response.data.data.adminList
+        this.categoryList = response.data.categoryList
+        this.adminList = response.data.adminList
       })
     },
     getList() {

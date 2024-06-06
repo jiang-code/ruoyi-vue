@@ -1,8 +1,8 @@
 package com.ruoyi.dts.controller;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.dts.domain.DtsCollect;
-import com.ruoyi.dts.service.DtsCollectService;
+import com.ruoyi.dts.db.domain.DtsCollect;
+import com.ruoyi.dts.db.service.DtsCollectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +26,8 @@ public class AdminCollectController extends BaseController {
     @PreAuthorize("@ss.hasPermi('admin:collect:list')")
     @GetMapping("/list")
     public Object list(String userId, String valueId) {
-
         startPage();
         List<DtsCollect> collectList = collectService.querySelective(userId, valueId);
-
         return getDataTable(collectList);
     }
 }

@@ -5,14 +5,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ruoyi.dts.domain.DtsBrand;
-import com.ruoyi.dts.domain.DtsCart;
+import com.ruoyi.dts.db.domain.DtsBrand;
+import com.ruoyi.dts.db.domain.DtsCart;
 
 /**
  * 用于存储 品牌入驻商购物车商品的对象
  * 
- * @author CHENBO
- * @QQ 623659388
+ * @author suichj
+ * 
  * @since 1.0.0
  */
 public class BrandCartGoods implements Serializable {

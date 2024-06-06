@@ -10,10 +10,16 @@ import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
 import com.ruoyi.dts.core.validator.Order;
 import com.ruoyi.dts.core.validator.Sort;
+import com.ruoyi.dts.db.domain.DtsCart;
+import com.ruoyi.dts.db.domain.DtsCoupon;
+import com.ruoyi.dts.db.domain.DtsCouponUser;
+import com.ruoyi.dts.db.domain.DtsGrouponRules;
+import com.ruoyi.dts.db.service.*;
+import com.ruoyi.dts.db.util.CouponConstant;
 import com.ruoyi.dts.wx.dao.CouponVo;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsCart;
-import com.ruoyi.dts.domain.DtsCoupon;
-import com.ruoyi.dts.domain.DtsCouponUser;
-import com.ruoyi.dts.domain.DtsGrouponRules;
-import com.ruoyi.dts.service.CouponVerifyService;
-import com.ruoyi.dts.service.DtsCartService;
-import com.ruoyi.dts.service.DtsCouponService;
-import com.ruoyi.dts.service.DtsCouponUserService;
-import com.ruoyi.dts.service.DtsGrouponRulesService;
-import com.ruoyi.dts.util.CouponConstant;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 import com.ruoyi.dts.wx.util.WxResponseCode;
 import com.ruoyi.dts.wx.util.WxResponseUtil;
@@ -108,7 +104,8 @@ public class WxCouponController {
 			return ResponseUtil.unlogin();
 		}
 
-		List<DtsCouponUser> couponUserList = couponUserService.queryList(userId, null, status, page, size, sort, order);
+		List<DtsCouponUser> couponUserList = couponUserService.queryWxList(userId, null, status, page, size, sort,
+				order);
 		List<CouponVo> couponVoList = change(couponUserList);
 		int total = couponService.queryTotal();
 		Map<String, Object> data = new HashMap<String, Object>();

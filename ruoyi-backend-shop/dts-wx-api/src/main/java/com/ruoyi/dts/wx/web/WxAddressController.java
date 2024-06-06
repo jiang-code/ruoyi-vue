@@ -13,8 +13,13 @@ import java.util.concurrent.TimeUnit;
 
 import javax.validation.constraints.NotNull;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.core.util.RegexUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsAddress;
+import com.ruoyi.dts.db.domain.DtsRegion;
+import com.ruoyi.dts.db.service.DtsAddressService;
+import com.ruoyi.dts.db.service.DtsRegionService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +31,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsAddress;
-import com.ruoyi.dts.domain.DtsRegion;
-import com.ruoyi.dts.service.DtsAddressService;
-import com.ruoyi.dts.service.DtsRegionService;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 import com.ruoyi.dts.wx.service.GetRegionService;
 

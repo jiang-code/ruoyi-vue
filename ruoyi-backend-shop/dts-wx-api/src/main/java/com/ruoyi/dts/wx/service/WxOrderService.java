@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.core.consts.CommConsts;
 import com.ruoyi.dts.core.express.ExpressService;
 import com.ruoyi.dts.core.express.dao.ExpressInfo;
@@ -23,10 +24,15 @@ import com.ruoyi.dts.core.qcode.QCodeService;
 import com.ruoyi.dts.core.system.SystemConfig;
 import com.ruoyi.dts.core.util.DateTimeUtil;
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.*;
+import com.ruoyi.dts.db.service.*;
+import com.ruoyi.dts.db.util.CouponUserConstant;
+import com.ruoyi.dts.db.util.OrderHandleOption;
+import com.ruoyi.dts.db.util.OrderUtil;
 import com.ruoyi.dts.wx.dao.BrandCartGoods;
 import com.ruoyi.dts.wx.dao.BrandOrderGoods;
 import com.ruoyi.dts.wx.util.IpUtil;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import com.ruoyi.dts.wx.util.WxResponseCode;
 import com.ruoyi.dts.wx.util.WxResponseUtil;
 import org.apache.commons.io.IOUtils;
@@ -37,7 +43,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.binarywang.wxpay.bean.notify.WxPayNotifyResponse;
 import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
 import com.github.binarywang.wxpay.bean.order.WxPayMpOrderResult;
@@ -46,37 +51,6 @@ import com.github.binarywang.wxpay.bean.result.BaseWxPayResult;
 import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.github.pagehelper.PageInfo;
-import com.ruoyi.dts.domain.DtsAccountTrace;
-import com.ruoyi.dts.domain.DtsAddress;
-import com.ruoyi.dts.domain.DtsCart;
-import com.ruoyi.dts.domain.DtsComment;
-import com.ruoyi.dts.domain.DtsCoupon;
-import com.ruoyi.dts.domain.DtsCouponUser;
-import com.ruoyi.dts.domain.DtsGoodsProduct;
-import com.ruoyi.dts.domain.DtsGroupon;
-import com.ruoyi.dts.domain.DtsGrouponRules;
-import com.ruoyi.dts.domain.DtsOrder;
-import com.ruoyi.dts.domain.DtsOrderGoods;
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.domain.DtsUserAccount;
-import com.ruoyi.dts.domain.DtsUserFormid;
-import com.ruoyi.dts.service.CouponVerifyService;
-import com.ruoyi.dts.service.DtsAccountService;
-import com.ruoyi.dts.service.DtsAddressService;
-import com.ruoyi.dts.service.DtsCartService;
-import com.ruoyi.dts.service.DtsCommentService;
-import com.ruoyi.dts.service.DtsCouponUserService;
-import com.ruoyi.dts.service.DtsGoodsProductService;
-import com.ruoyi.dts.service.DtsGrouponRulesService;
-import com.ruoyi.dts.service.DtsGrouponService;
-import com.ruoyi.dts.service.DtsOrderGoodsService;
-import com.ruoyi.dts.service.DtsOrderService;
-import com.ruoyi.dts.service.DtsRegionService;
-import com.ruoyi.dts.service.DtsUserFormIdService;
-import com.ruoyi.dts.service.DtsUserService;
-import com.ruoyi.dts.util.CouponUserConstant;
-import com.ruoyi.dts.util.OrderHandleOption;
-import com.ruoyi.dts.util.OrderUtil;
 
 /**
  * 订单服务
@@ -774,7 +748,7 @@ public class WxOrderService {
 		}
 
 		/**
-		 * modify by CHENBO 2019-08-09 对于多店铺模式，支付成功后，如果这个订单包含多个商铺的商品，则考虑拆分订单
+		 * modify by suichj 2019-08-09 对于多店铺模式，支付成功后，如果这个订单包含多个商铺的商品，则考虑拆分订单
 		 * 1.原订单删除，需要按店铺拆成多个单，每个订单的订单序列码用 orderSn_1,orderSn_2,orderSn_3... 2.调整原订单商品表
 		 * dts_order_goods 中的订单编号 3.调整团购的订单编号，注意，不管是否为多商铺模式，每个团购商品只会归属于一个订单或一个子订单
 		 * 4.调整用户优惠券对应的订单，用户优惠券对应的订单可能会有多个，因为多店铺模式，每个大订单可能只有一个优惠券，会按实际收款金额比例进行平摊

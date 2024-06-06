@@ -44,7 +44,7 @@
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageNum" :limit.sync="listQuery.pageSize" @pagination="getList" />
 
     <!-- 订单详情对话框 -->
     <el-dialog :visible.sync="orderDialogVisible" title="订单详情" width="800">
@@ -225,7 +225,7 @@ export default {
     },
     getListShipChannel() {
       listShipChannel().then(response => {
-        this.shipChannelList = response.data.data.shipChannelList
+        this.shipChannelList = response.data.shipChannelList
       })
     },
     handleFilter() {
@@ -234,7 +234,7 @@ export default {
     },
     handleDetail(row) {
       detailOrder(row.id).then(response => {
-        this.orderDetail = response.data.data
+        this.orderDetail = response.data
       })
       this.orderDialogVisible = true
     },

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 用户信息
  * 
- * @author CHENBO
+ * @author suichj
  * @since 1.0.0
  */
 public class UserInfo implements Serializable {

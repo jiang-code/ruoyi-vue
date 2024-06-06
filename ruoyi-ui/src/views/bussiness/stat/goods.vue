@@ -19,7 +19,8 @@ export default {
   },
   created() {
     statGoods().then(response => {
-      this.chartData = response.data.data
+      debugger
+      this.chartData = response.data
       this.chartSettings = {
         labelMap: {
           'orders': '订单量',

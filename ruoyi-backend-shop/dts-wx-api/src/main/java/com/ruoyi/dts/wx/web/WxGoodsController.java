@@ -13,9 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 import javax.validation.constraints.NotNull;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.qcloud.cos.utils.StringUtils;
 import com.ruoyi.dts.core.validator.Order;
 import com.ruoyi.dts.core.validator.Sort;
+import com.ruoyi.dts.db.domain.*;
+import com.ruoyi.dts.db.service.*;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
-import com.mysql.jdbc.StringUtils;
-import com.ruoyi.dts.domain.DtsBrand;
-import com.ruoyi.dts.domain.DtsCategory;
-import com.ruoyi.dts.domain.DtsComment;
-import com.ruoyi.dts.domain.DtsFootprint;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.domain.DtsSearchHistory;
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.service.DtsBrandService;
-import com.ruoyi.dts.service.DtsCategoryService;
-import com.ruoyi.dts.service.DtsCollectService;
-import com.ruoyi.dts.service.DtsCommentService;
-import com.ruoyi.dts.service.DtsFootprintService;
-import com.ruoyi.dts.service.DtsGoodsAttributeService;
-import com.ruoyi.dts.service.DtsGoodsProductService;
-import com.ruoyi.dts.service.DtsGoodsService;
-import com.ruoyi.dts.service.DtsGoodsSpecificationService;
-import com.ruoyi.dts.service.DtsGrouponRulesService;
-import com.ruoyi.dts.service.DtsIssueService;
-import com.ruoyi.dts.service.DtsSearchHistoryService;
-import com.ruoyi.dts.service.DtsUserService;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 
 /**

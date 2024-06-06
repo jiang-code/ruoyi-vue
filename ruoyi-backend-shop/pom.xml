@@ -5,23 +5,30 @@
     <parent>
         <artifactId>ruoyi</artifactId>
         <groupId>com.ruoyi</groupId>
-        <version>3.8.6</version>
+        <version>3.8.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ruoyi-backend-shop</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <description>
         业务模块
     </description>
     <modules>
-<!--        <module>shop-admin-api</module>-->
         <module>dts-admin-api</module>
-<!--        <module>dts-wx-api</module>-->
+        <module>dts-wx-api</module>
+        <module>dts-core</module>
+        <module>dts-dao</module>
     </modules>
 
     <dependencies>
+        <!-- Mysql驱动包 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 
         <!-- 通用工具-->
         <dependency>

@@ -2,16 +2,16 @@ package com.ruoyi.dts.wx.service;
 
 import com.ruoyi.dts.core.qcode.QCodeService;
 import com.ruoyi.dts.core.type.AgencyShareTypeEnum;
+import com.ruoyi.dts.db.domain.DtsBrand;
+import com.ruoyi.dts.db.domain.DtsGoods;
+import com.ruoyi.dts.db.service.DtsAgencyService;
+import com.ruoyi.dts.db.service.DtsBrandService;
+import com.ruoyi.dts.db.service.DtsGoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.dts.domain.DtsBrand;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.service.DtsAgencyService;
-import com.ruoyi.dts.service.DtsBrandService;
-import com.ruoyi.dts.service.DtsGoodsService;
 
 @Service
 public class WxAgencyService {

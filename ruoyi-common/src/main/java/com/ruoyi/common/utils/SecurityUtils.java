@@ -15,7 +15,7 @@ import com.ruoyi.common.exception.ServiceException;
 
 /**
  * 安全服务工具类
- * 
+ *
  * @author ruoyi
  */
 public class SecurityUtils
@@ -116,7 +116,7 @@ public class SecurityUtils
 
     /**
      * 是否为管理员
-     * 
+     *
      * @param userId 用户ID
      * @return 结果
      */
@@ -127,7 +127,7 @@ public class SecurityUtils
 
     /**
      * 验证用户是否具备某权限
-     * 
+     *
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
@@ -138,7 +138,7 @@ public class SecurityUtils
 
     /**
      * 判断是否包含权限
-     * 
+     *
      * @param authorities 权限列表
      * @param permission 权限字符串
      * @return 用户是否具备某权限
@@ -151,7 +151,7 @@ public class SecurityUtils
 
     /**
      * 验证用户是否拥有某个角色
-     * 
+     *
      * @param role 角色标识
      * @return 用户是否具备某角色
      */
@@ -164,7 +164,7 @@ public class SecurityUtils
 
     /**
      * 判断是否包含角色
-     * 
+     *
      * @param roles 角色列表
      * @param role 角色
      * @return 用户是否具备某角色权限

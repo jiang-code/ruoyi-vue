@@ -7,9 +7,13 @@ import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
 import com.ruoyi.dts.core.validator.Order;
 import com.ruoyi.dts.core.validator.Sort;
+import com.ruoyi.dts.db.domain.DtsGoods;
+import com.ruoyi.dts.db.domain.DtsTopic;
+import com.ruoyi.dts.db.service.DtsGoodsService;
+import com.ruoyi.dts.db.service.DtsTopicService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.domain.DtsTopic;
-import com.ruoyi.dts.service.DtsGoodsService;
-import com.ruoyi.dts.service.DtsTopicService;
+import com.alibaba.fastjson2.JSONObject;
 
 /**
  * 专题服务

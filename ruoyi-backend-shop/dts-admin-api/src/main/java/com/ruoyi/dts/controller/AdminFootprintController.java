@@ -1,8 +1,8 @@
 package com.ruoyi.dts.controller;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.dts.domain.DtsFootprint;
-import com.ruoyi.dts.service.DtsFootprintService;
+import com.ruoyi.dts.db.domain.DtsFootprint;
+import com.ruoyi.dts.db.service.DtsFootprintService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,6 @@ public class AdminFootprintController extends BaseController {
     public Object list(String userId, String goodsId) {
         startPage();
         List<DtsFootprint> footprintList = footprintService.querySelective(userId, goodsId);
-
         return getDataTable(footprintList);
     }
 }

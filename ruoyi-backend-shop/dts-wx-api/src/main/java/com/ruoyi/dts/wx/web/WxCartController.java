@@ -12,8 +12,10 @@ import java.util.Map;
 
 import com.ruoyi.dts.core.system.SystemConfig;
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.*;
+import com.ruoyi.dts.db.service.*;
 import com.ruoyi.dts.wx.dao.BrandCartGoods;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,23 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsAddress;
-import com.ruoyi.dts.domain.DtsBrand;
-import com.ruoyi.dts.domain.DtsCart;
-import com.ruoyi.dts.domain.DtsCoupon;
-import com.ruoyi.dts.domain.DtsCouponUser;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.domain.DtsGoodsProduct;
-import com.ruoyi.dts.domain.DtsGrouponRules;
-import com.ruoyi.dts.service.CouponVerifyService;
-import com.ruoyi.dts.service.DtsAddressService;
-import com.ruoyi.dts.service.DtsBrandService;
-import com.ruoyi.dts.service.DtsCartService;
-import com.ruoyi.dts.service.DtsCouponUserService;
-import com.ruoyi.dts.service.DtsGoodsProductService;
-import com.ruoyi.dts.service.DtsGoodsService;
-import com.ruoyi.dts.service.DtsGrouponRulesService;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 import com.ruoyi.dts.wx.util.WxResponseUtil;
 

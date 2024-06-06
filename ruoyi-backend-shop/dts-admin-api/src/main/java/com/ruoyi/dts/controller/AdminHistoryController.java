@@ -1,8 +1,8 @@
 package com.ruoyi.dts.controller;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.dts.domain.DtsSearchHistory;
-import com.ruoyi.dts.service.DtsSearchHistoryService;
+import com.ruoyi.dts.db.domain.DtsSearchHistory;
+import com.ruoyi.dts.db.service.DtsSearchHistoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

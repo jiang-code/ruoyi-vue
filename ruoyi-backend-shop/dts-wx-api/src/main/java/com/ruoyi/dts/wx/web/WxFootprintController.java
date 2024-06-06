@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsFootprint;
+import com.ruoyi.dts.db.domain.DtsGoods;
+import com.ruoyi.dts.db.service.DtsFootprintService;
+import com.ruoyi.dts.db.service.DtsGoodsService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
-import com.ruoyi.dts.domain.DtsFootprint;
-import com.ruoyi.dts.domain.DtsGoods;
-import com.ruoyi.dts.service.DtsFootprintService;
-import com.ruoyi.dts.service.DtsGoodsService;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 
 /**

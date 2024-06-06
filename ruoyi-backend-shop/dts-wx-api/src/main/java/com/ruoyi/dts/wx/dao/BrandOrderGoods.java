@@ -1,16 +1,16 @@
 package com.ruoyi.dts.wx.dao;
 
+import com.ruoyi.dts.db.domain.DtsOrderGoods;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.ruoyi.dts.domain.DtsOrderGoods;
-
 /**
  * 用于拆单时存储临时的订单商品
  * 
- * @author CHENBO
- * @QQ 623659388
+ * @author suichj
+ * 
  * @since 1.0.0
  */
 public class BrandOrderGoods implements Serializable {

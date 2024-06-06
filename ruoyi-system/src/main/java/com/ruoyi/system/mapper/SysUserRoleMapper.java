@@ -1,6 +1,8 @@
 package com.ruoyi.system.mapper;
 
 import java.util.List;
+
+import com.ruoyi.system.domain.SysUserRoles;
 import org.apache.ibatis.annotations.Param;
 import com.ruoyi.system.domain.SysUserRole;
 
@@ -34,6 +36,8 @@ public interface SysUserRoleMapper
      * @return 结果
      */
     public int countUserRoleByRoleId(Long roleId);
+
+    public List<SysUserRoles> findRoleListByUserId(Long userId);
 
     /**
      * 批量新增用户角色信息

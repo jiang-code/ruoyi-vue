@@ -1,6 +1,6 @@
 package com.ruoyi.dts.wx.web;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

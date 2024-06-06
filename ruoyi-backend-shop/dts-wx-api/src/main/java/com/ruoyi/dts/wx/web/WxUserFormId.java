@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsUser;
+import com.ruoyi.dts.db.domain.DtsUserFormid;
+import com.ruoyi.dts.db.service.DtsUserFormIdService;
+import com.ruoyi.dts.db.service.DtsUserService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.domain.DtsUserFormid;
-import com.ruoyi.dts.service.DtsUserFormIdService;
-import com.ruoyi.dts.service.DtsUserService;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 
 @RestController

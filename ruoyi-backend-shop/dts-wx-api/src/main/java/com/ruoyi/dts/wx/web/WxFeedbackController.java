@@ -1,7 +1,11 @@
 package com.ruoyi.dts.wx.web;
 
 import com.ruoyi.dts.core.util.RegexUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsFeedback;
+import com.ruoyi.dts.db.domain.DtsUser;
+import com.ruoyi.dts.db.service.DtsFeedbackService;
+import com.ruoyi.dts.db.service.DtsUserService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,19 +16,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsFeedback;
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.service.DtsFeedbackService;
-import com.ruoyi.dts.service.DtsUserService;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 
 /**
  * 意见反馈服务
  *
- * @author CHENBO
+ * @author suichj
  * @since 1.0.0
- * @QQ 623659388
+ * 
  */
 @RestController
 @RequestMapping("/wx/feedback")

@@ -1,13 +1,11 @@
 package com.ruoyi.dts.wx.util;
 
-import com.ruoyi.dts.core.util.ResponseUtil;
-
 /**
  * 微信接口枚举信息的响应
  * 
- * @author CHENBO
+ * @author suichj
  * @since 1.0.0
- * @QQ 623659388
+ * 
  */
 public class WxResponseUtil extends ResponseUtil {
 

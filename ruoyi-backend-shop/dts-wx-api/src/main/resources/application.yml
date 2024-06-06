@@ -1,23 +1,20 @@
-spring:
-  profiles:
-    active: @profile.active@
-  messages:
-    encoding: UTF-8
-  servlet:
-    multipart:
-      max-file-size: 50Mb
-      max-request-size: 80Mb
-      location: /tmp/tomcat_upload
-      
 server:
   port: 8089
   servlet:
     context-path: /demo
-
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.ruoyi.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
 logging:
   level:
-    root:  ERROR
-    org.springframework:  ERROR
-    org.mybatis:  ERROR
-    com.ruoyi.dts.wx:  DEBUG
-    com.ruoyi.dts:  INFO
+    root: ERROR
+    org.springframework: ERROR
+    org.mybatis: ERROR
+    com.ruoyi.dts.wx: DEBUG
+    com.ruoyi.dts: INFO
+spring:
+  profiles:
+    active: dev

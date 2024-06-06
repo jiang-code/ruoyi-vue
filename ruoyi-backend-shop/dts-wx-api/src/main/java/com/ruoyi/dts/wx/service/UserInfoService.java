@@ -1,12 +1,12 @@
 package com.ruoyi.dts.wx.service;
 
+import com.ruoyi.dts.db.domain.DtsUser;
+import com.ruoyi.dts.db.service.DtsUserService;
 import com.ruoyi.dts.wx.dao.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.service.DtsUserService;
 
 @Service
 public class UserInfoService {

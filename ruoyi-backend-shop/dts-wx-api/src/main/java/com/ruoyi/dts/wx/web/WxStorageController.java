@@ -6,7 +6,9 @@ import java.util.Map;
 
 import com.ruoyi.dts.core.storage.StorageService;
 import com.ruoyi.dts.core.util.CharUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsStorage;
+import com.ruoyi.dts.db.service.DtsStorageService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsStorage;
-import com.ruoyi.dts.service.DtsStorageService;
+import com.alibaba.fastjson2.JSONObject;
 
 /**
  * 对象存储服务
@@ -40,7 +40,7 @@ public class WxStorageController {
 	private StorageService storageService;
 
 	@Autowired
-	private DtsStorageService DtsStorageService;
+	private DtsStorageService dtsStorageService;
 
 	@SuppressWarnings("unused")
 	private String generateKey(String originalFilename) {
@@ -52,7 +52,7 @@ public class WxStorageController {
 
 		do {
 			key = CharUtil.getRandomString(20) + suffix;
-			storageInfo = DtsStorageService.findByKey(key);
+			storageInfo = dtsStorageService.findByKey(key);
 		} while (storageInfo != null);
 
 		return key;
@@ -91,7 +91,7 @@ public class WxStorageController {
 	public ResponseEntity<Resource> fetch(@PathVariable String key) {
 		// logger.info("【请求开始】访问存储对象,请求参数,key:{}", key);
 
-		DtsStorage DtsStorage = DtsStorageService.findByKey(key);
+		DtsStorage DtsStorage = dtsStorageService.findByKey(key);
 		if (key == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -119,7 +119,7 @@ public class WxStorageController {
 	@GetMapping("/download/{key:.+}")
 	public ResponseEntity<Resource> download(@PathVariable String key) {
 		// logger.info("【请求开始】访问存储对象,请求参数,key:{}", key);
-		DtsStorage DtsStorage = DtsStorageService.findByKey(key);
+		DtsStorage DtsStorage = dtsStorageService.findByKey(key);
 		if (key == null) {
 			return ResponseEntity.notFound().build();
 		}

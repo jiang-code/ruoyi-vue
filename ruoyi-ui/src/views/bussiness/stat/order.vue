@@ -18,7 +18,9 @@ export default {
   },
   created() {
     statOrder().then(response => {
-      this.chartData = response.data.data
+      this.chartData = response.data
+      // alert(this.chartData)
+      // alert(JSON.stringify(this.chartData))
       this.chartSettings = {
         labelMap: {
           'orders': '订单量',
@@ -28,7 +30,7 @@ export default {
         }
       }
       this.chartExtend = {
-        xAxis: { boundaryGap: true }
+        // xAxis: { boundaryGap: true }
       }
     })
   }

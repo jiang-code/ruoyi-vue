@@ -1,8 +1,8 @@
 package com.ruoyi.dts.controller;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.dts.domain.DtsFeedback;
-import com.ruoyi.dts.service.DtsFeedbackService;
+import com.ruoyi.dts.db.domain.DtsFeedback;
+import com.ruoyi.dts.db.service.DtsFeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author CHENBO
+ *  suichj
+ *
  * @date 2018/8/26 01:11
- * @QQ 623659388
  */
 @RestController
 @RequestMapping("/admin/feedback")
@@ -31,8 +31,9 @@ public class AdminFeedbackController extends BaseController {
     @PreAuthorize("@ss.hasPermi('admin:feedback:list')")
     @GetMapping("/list")
     public Object list(Integer userId, String username) {
-
+        startPage();
         List<DtsFeedback> feedbackList = feedbackService.querySelective(userId, username);
+
         return getDataTable(feedbackList);
     }
 }

@@ -5,7 +5,10 @@ import java.util.Map;
 
 import com.ruoyi.dts.core.consts.CommConsts;
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsUser;
+import com.ruoyi.dts.db.service.DtsAgencyService;
+import com.ruoyi.dts.db.service.DtsUserService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ruoyi.dts.domain.DtsUser;
-import com.ruoyi.dts.service.DtsAgencyService;
-import com.ruoyi.dts.service.DtsUserService;
+
 import com.ruoyi.dts.wx.annotation.LoginUser;
 import com.ruoyi.dts.wx.service.WxAgencyService;
 
@@ -26,7 +27,7 @@ import com.ruoyi.dts.wx.service.WxAgencyService;
  * 代理业务接口
  * 
  * @author ruoyi
- * @QQ 623659388
+ * 
  * @since 1.0.0
  */
 @RestController

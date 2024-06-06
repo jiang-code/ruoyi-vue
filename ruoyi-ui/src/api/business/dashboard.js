@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function info(query) {
   return request({
-    url: '/dashboard',
+    url: '/admin/dashboard',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function info(query) {
 
 export function chart(query) {
   return request({
-    url: '/dashboard/chart',
+    url: '/admin/dashboard/chart',
     method: 'get',
     params: query
   })

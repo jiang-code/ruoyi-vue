@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function listArticle(query) {
   return request({
-    url: '/article/list',
+    url: '/admin/article/list',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function listArticle(query) {
 
 export function deleteArticle(data) {
   return request({
-    url: '/article/delete',
+    url: '/admin/article/delete',
     method: 'post',
     data
   })
@@ -18,7 +18,7 @@ export function deleteArticle(data) {
 
 export function publishArticle(data) {
   return request({
-    url: '/article/create',
+    url: '/admin/article/create',
     method: 'post',
     data
   })
@@ -26,7 +26,7 @@ export function publishArticle(data) {
 
 export function detailArticle(id) {
   return request({
-    url: '/article/detail',
+    url: '/admin/article/detail',
     method: 'get',
     params: { id }
   })
@@ -34,7 +34,7 @@ export function detailArticle(id) {
 
 export function editArticle(data) {
   return request({
-    url: '/article/update',
+    url: '/admin/article/update',
     method: 'post',
     data
   })

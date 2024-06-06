@@ -1,18 +1,21 @@
 package com.ruoyi.dts.controller;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.dts.domain.DtsArticle;
-import com.ruoyi.dts.service.DtsArticleService;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.dts.util.ArticleType;
+import com.ruoyi.dts.db.domain.DtsArticle;
+import com.ruoyi.dts.db.service.DtsArticleService;
+import com.ruoyi.dts.util.AdminResponseCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
 
 /**
  * 公告管理
@@ -36,7 +39,9 @@ public class AdminArticleController extends BaseController {
     public Object list(String title) {
         startPage();
         List<DtsArticle> articleList = articleService.querySelective(title);
+
         return getDataTable(articleList);
+
     }
 
     /**
@@ -47,15 +52,16 @@ public class AdminArticleController extends BaseController {
     @PreAuthorize("@ss.hasPermi('admin:article:update')")
     @PostMapping("/update")
     public Object update(@RequestBody DtsArticle article) {
-//        if (StringUtils.isEmpty(article.getType())) {
-//            article.setType(ArticleType.ANNOUNCE.type());//如果没有传入类型，默认为信息公告
-//        }
+
+        if (StringUtils.isEmpty(article.getType())) {
+            article.setType(ArticleType.ANNOUNCE.type());//如果没有传入类型，默认为信息公告
+        }
         if (articleService.updateById(article) == 0) {
             logger.error("推广管理->公告管理->编辑错误:{}", "更新数据失败");
             throw new RuntimeException("更新数据失败");
         }
         logger.info("【请求结束】推广管理->公告管理->编辑,响应结果:{}", "成功!");
-        return success();
+        return AjaxResult.success();
     }
 
     /**
@@ -66,15 +72,13 @@ public class AdminArticleController extends BaseController {
     @PreAuthorize("@ss.hasPermi('admin:article:delete')")
     @PostMapping("/delete")
     public Object delete(@RequestBody DtsArticle article) {
+
         Integer id = article.getId();
-        if (id == null) {
-            return error("参数为空");
-        }
 
         articleService.deleteById(id);
 
         logger.info("【请求结束】推广管理->公告管理->删除,响应结果:{}", "成功");
-        return success();
+        return AjaxResult.success();
     }
 
 
@@ -98,7 +102,7 @@ public class AdminArticleController extends BaseController {
         }
         // 这里不打印响应结果，文章内容信息较多
         // logger.info("【请求结束】获取公告文章,响应结果：{}",JSONObject.toJSONString(article));
-        return success(article);
+        return AjaxResult.success(article);
     }
 
     /**
@@ -111,9 +115,18 @@ public class AdminArticleController extends BaseController {
     public Object create(@RequestBody DtsArticle article) {
 
         String title = article.getTitle();
+        if (articleService.checkExistByTitle(title)) {
+            logger.error("推广管理->公告管理->发布公告错误:{}", AdminResponseCode.ARTICLE_NAME_EXIST.desc());
+            return "发布公告错误";
+        }
+        if (StringUtils.isEmpty(article.getType())) {
+            article.setType(ArticleType.ANNOUNCE.type());//如果没有传入类型，默认为信息公告
+        }
         articleService.add(article);
 
         logger.info("【请求结束】推广管理->公告管理->发布公告,响应结果:{}", "成功!");
-        return success();
+        return AjaxResult.success();
     }
+
+
 }

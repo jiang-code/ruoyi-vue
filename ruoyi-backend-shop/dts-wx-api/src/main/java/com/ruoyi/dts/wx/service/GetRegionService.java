@@ -1,17 +1,15 @@
 package com.ruoyi.dts.wx.service;
 
-import java.util.List;
-
+import com.ruoyi.dts.db.domain.DtsRegion;
+import com.ruoyi.dts.db.service.DtsRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ruoyi.dts.domain.DtsRegion;
-import com.ruoyi.dts.service.DtsRegionService;
+import java.util.List;
 
 /**
  * @author ruoyi
  * @since 1.0.0
- * @date 2017-04-11 11:07
  **/
 @Component
 public class GetRegionService {

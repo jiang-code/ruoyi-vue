@@ -13,7 +13,10 @@ import com.ruoyi.dts.core.consts.CommConsts;
 import com.ruoyi.dts.core.type.BrokerageTypeEnum;
 import com.ruoyi.dts.core.util.DateTimeUtil;
 import com.ruoyi.dts.core.util.JacksonUtil;
-import com.ruoyi.dts.core.util.ResponseUtil;
+import com.ruoyi.dts.db.domain.DtsAccountTrace;
+import com.ruoyi.dts.db.domain.DtsUserAccount;
+import com.ruoyi.dts.db.service.DtsAccountService;
+import com.ruoyi.dts.wx.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ruoyi.dts.domain.DtsAccountTrace;
-import com.ruoyi.dts.domain.DtsUserAccount;
-import com.ruoyi.dts.service.DtsAccountService;
+import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.dts.wx.annotation.LoginUser;
 import com.ruoyi.dts.wx.service.WxOrderService;
 import com.ruoyi.dts.wx.util.WxResponseCode;
@@ -39,8 +39,8 @@ import com.ruoyi.dts.wx.util.WxResponseUtil;
  * 佣金业务接口
  * 
  * @since 1.0.0
- * @author CHENBO
- * @QQ 623659388
+ * @author suichj
+ * 
  */
 @RestController
 @RequestMapping("/wx/brokerage")
