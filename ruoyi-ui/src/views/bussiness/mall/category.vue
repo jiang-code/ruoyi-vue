@@ -171,6 +171,8 @@ export default {
         picUrl: undefined
       },
       dialogFormVisible: false,
+      // 设置上传的请求头部
+      headers: { Authorization: "Bearer " + getToken() },
       dialogStatus: '',
       textMap: {
         update: '编辑',

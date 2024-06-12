@@ -93,7 +93,7 @@ dts:
   # 对象存储配置
   storage:
     # 当前工作的对象存储模式，分别是local、aliyun、tencent、qiniu
-    active: local
+    active: tencent
     # 本地对象存储配置信息
     local:
       storagePath: dts/storage
@@ -108,10 +108,10 @@ dts:
     # 腾讯对象存储配置信息
     # 请参考 https://cloud.tencent.com/document/product/436/6249
     tencent:
-      secretId: 111111
-      secretKey: xxxxxx
-      region: xxxxxx
-      bucketName: dts
+      secretId: AKIDhI7sY3Y9jREvWwUZZUNKF4nNqR7kDTWR
+      secretKey: xwundXflxCNTTK7kRW6fCwlbJ8xq0Ogs
+      region: ap-beijing
+      bucketName: jiang-1321086010
     # 七牛云对象存储配置信息
     qiniu:
       endpoint: http://dtsshop.wx.clouddn.com

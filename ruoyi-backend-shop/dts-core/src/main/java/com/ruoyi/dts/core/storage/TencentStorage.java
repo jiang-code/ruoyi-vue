@@ -1,5 +1,6 @@
 package com.ruoyi.dts.core.storage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -98,6 +99,12 @@ public class TencentStorage implements Storage {
 			logger.info("腾讯云存储结果：" + putObjectResult.getRequestId());
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 
