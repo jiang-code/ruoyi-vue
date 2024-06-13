@@ -96,15 +96,15 @@ export default {
   },
   created() {
     chart().then(response => {
-      this.userOrderCnt = response.data.data.userOrderCnt
-      this.orderAmts = response.data.data.orderAmts
-      this.categorySell = response.data.data.categorySell
+      this.userOrderCnt = response.data.userOrderCnt
+      this.orderAmts = response.data.orderAmts
+      this.categorySell = response.data.categorySell
     })
     info().then(response => {
-      this.userTotal = response.data.data.userTotal
-      this.goodsTotal = response.data.data.goodsTotal
-      this.productTotal = response.data.data.productTotal
-      this.orderTotal = response.data.data.orderTotal
+      this.userTotal = response.data.userTotal
+      this.goodsTotal = response.data.goodsTotal
+      this.productTotal = response.data.productTotal
+      this.orderTotal = response.data.orderTotal
     })
   },
   methods: {
