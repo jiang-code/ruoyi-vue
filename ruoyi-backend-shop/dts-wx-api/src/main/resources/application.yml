@@ -8,6 +8,9 @@ mybatis:
   typeAliasesPackage: com.ruoyi.**.domain
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mapper/**/*Mapper.xml
+  #用于mybatis在控制台打印sql日志
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
     root: ERROR
@@ -18,3 +21,9 @@ logging:
 spring:
   profiles:
     active: dev
+
+pagehelper:
+  helperDialect:  mysql
+  reasonable: true
+  supportMethodsArguments:  true
+  params: count=countSql
