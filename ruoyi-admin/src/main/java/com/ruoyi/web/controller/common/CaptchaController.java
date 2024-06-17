@@ -79,10 +79,6 @@ public class CaptchaController
         }
 
         redisCache.setCacheObject(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
-        // 生成图片
-        int w = 111, h = 36;
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        VerifyCodeUtils.outputImage(w, h, stream, capStr);
         // 转换流信息写出
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
         try
@@ -95,7 +91,7 @@ public class CaptchaController
         }
 
         ajax.put("uuid", uuid);
-        ajax.put("img", Base64.encode(stream.toByteArray()));
+        ajax.put("img", Base64.encode(os.toByteArray()));
         return ajax;
     }
 }
