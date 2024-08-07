@@ -6,6 +6,7 @@ import com.ruoyi.dts.db.service.DtsAccountService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * 代理结算job
  */
 @Component
+@EnableScheduling
 public class SettlementJob {
 
 	private final Log logger = LogFactory.getLog(SettlementJob.class);
