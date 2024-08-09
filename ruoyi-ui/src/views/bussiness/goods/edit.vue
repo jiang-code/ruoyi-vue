@@ -287,9 +287,39 @@
 <script>
 import { detailGoods, editGoods, listCatAndBrand } from '@/api/business/goods'
 import { createStorage, uploadPath } from '@/api/business/storage'
-import Editor from '@tinymce/tinymce-vue'
 import { MessageBox } from 'element-ui'
 import { getToken } from '@/utils/auth'
+
+import tinymce from 'tinymce/tinymce' //tinymce默认hidden，不引入不显示
+import Editor from '@tinymce/tinymce-vue'
+import 'tinymce/themes/silver/theme' // 主题文件
+import 'tinymce/plugins/lists' // 列表插件
+import 'tinymce/plugins/advlist' // 有序列表插件
+import 'tinymce/plugins/autolink' // 当用户输入有效的完整URL时，autolink插件会自动创建超链接。
+import 'tinymce/plugins/link' // 链接
+import 'tinymce/plugins/print'   //打印
+import 'tinymce/plugins/hr'  // 水平线
+import 'tinymce/plugins/autosave' // 定时自动将编辑内容保存到浏览器本地存储中（Local Storage）
+import 'tinymce/plugins/autoresize' // 可拉伸宽度
+import 'tinymce/plugins/charmap' // 特殊字符
+import 'tinymce/plugins/code' // 查看源码
+import 'tinymce/plugins/codesample' // 插入代码
+import 'tinymce/plugins/directionality' // 文字方向
+import 'tinymce/plugins/emoticons' // 表情符号
+import 'tinymce/plugins/emoticons/js/emojis'
+import 'tinymce/plugins/fullscreen' //全屏
+import 'tinymce/plugins/image' // 插入上传图片插件
+import 'tinymce/plugins/importcss' //引入自己定义的css文件
+import 'tinymce/plugins/insertdatetime' //插入时间日期
+import 'tinymce/plugins/nonbreaking' // 空格
+import 'tinymce/plugins/pagebreak' //分页
+import 'tinymce/plugins/preview' // 预览
+import 'tinymce/plugins/quickbars' // 快速工具栏
+import 'tinymce/plugins/save' // 保存
+import 'tinymce/plugins/searchreplace' //查询替换
+import 'tinymce/plugins/table' // 插入表格插件
+import 'tinymce/plugins/wordcount' // 字数统计插件
+import 'tinymce/plugins/visualblocks' // 块范围显示
 
 export default {
   name: 'GoodsEdit',
@@ -329,8 +359,13 @@ export default {
         name: [{ required: true, message: '商品名称不能为空', trigger: 'blur' }]
       },
       editorInit: {
+        height: 400,
+        language_url: '/tinymce/langs/zh_CN.js',
         language: 'zh_CN',
-        convert_urls: false,
+        branding: false, // 关闭底部官网提示 默认true
+        paste_data_images: true, // 允许粘贴图像
+        skin_url: '/tinymce/skins/ui/oxide',  // 主题路径
+        content_css: `/tinymce/skins/content/default/content.css`, // 富文本编辑器内容区域样式
         plugins: [
           'advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount'
         ],
@@ -343,7 +378,7 @@ export default {
           formData.append('file', blobInfo.blob())
           createStorage(formData)
             .then(res => {
-              success(res.data.data.url)
+              success(res.data.url)
             })
             .catch(() => {
               failure('上传失败，请重新上传')
@@ -389,8 +424,8 @@ export default {
       })
 
       listCatAndBrand().then(response => {
-        this.categoryList = response.data.data.categoryList
-        this.brandList = response.data.data.brandList
+        this.categoryList = response.data.categoryList
+        this.brandList = response.data.brandList
       })
     },
     handleCategoryChange(value) {

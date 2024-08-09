@@ -15,9 +15,9 @@ logging:
   level:
     root: ERROR
     org.springframework: ERROR
-    org.mybatis: ERROR
+    org.mybatis: DEBUG
     com.ruoyi.dts.wx: DEBUG
-    com.ruoyi.dts: INFO
+    com.ruoyi.dts: DEBUG
 spring:
   profiles:
     active: dev
