@@ -4,6 +4,12 @@
 # 克隆项目
 git clone https://gitee.com/y_project/RuoYi-Vue
 
+# 推送项目token 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
+
+git remote set-url origin https://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@github.com/jiang-code/ruoyi-vue.git
+
+git push
+
 # 进入项目目录
 cd ruoyi-ui
 
