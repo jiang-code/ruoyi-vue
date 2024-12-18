@@ -172,7 +172,7 @@ export default {
   computed: {
     headers() {
       return {
-        'X-Dts-Admin-Token': getToken()
+         Authorization: "Bearer " + getToken()
       }
     }
   },
